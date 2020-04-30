@@ -71,10 +71,7 @@ public class OrdersWriter {
     }
 
     private String getSizeFor(Product product) {
-        if(product.getSize() != null)
             return product.getSize().toString();
-        else
-             return "Invalid Size";
     }
 
     private String getColorFor(Product product) {
