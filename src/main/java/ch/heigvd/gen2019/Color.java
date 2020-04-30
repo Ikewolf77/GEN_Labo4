@@ -35,3 +35,10 @@ class Yellow extends Color {
         return "yellow";
     }
 }
+
+class NullColor extends Color {
+    @Override
+    public String toString() {
+        return "no color";
+    }
+}

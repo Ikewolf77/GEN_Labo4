@@ -78,9 +78,6 @@ public class OrdersWriter {
     }
 
     private String getColorFor(Product product) {
-        if(product.getColor() != null)
             return product.getColor().toString();
-        else
-            return "no color";
     }
 }
