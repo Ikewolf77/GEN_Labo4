@@ -45,3 +45,10 @@ class XXL extends Size {
         return "XXL";
     }
 }
+
+class InvalidSize extends Size {
+    @Override
+    public String toString() {
+        return "Invalid Size";
+    }
+}

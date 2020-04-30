@@ -43,7 +43,7 @@ public class OrdersWriterTest {
 
     @Test
     public void OneOrderWithOneProductNoSize() {
-        order111.AddProduct(new Product("Pot", new Red(), null, 16.50, "SGD"));
+        order111.AddProduct(new Product("Pot", new Red(), new InvalidSize(), 16.50, "SGD"));
 
         String order111Json = JsonOrder111WithProduct("{\"code\": \"Pot\", \"color\": \"red\", \"price\": 16.5, \"currency\": \"SGD\"}");
         assertEquals("{\"orders\": [" + order111Json + "]}", new OrdersWriter(orders).getContents());
