@@ -1,7 +1,7 @@
 package ch.heigvd.gen2019;
 
 public abstract class OrdersWriter {
-    private static StringBuffer sb;
+    private StringBuffer sb;
 
     void start(){
         sb = new StringBuffer();
@@ -40,4 +40,6 @@ public abstract class OrdersWriter {
     public String toString() {
         return sb.toString();
     }
+
+    abstract String getContents();
 }

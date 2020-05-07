@@ -39,12 +39,16 @@ public class Order extends OrdersWriter {
         products.add(product);
     }
 
-    public void getOrderContents() {
+    public String getContents() {
+
+        start();
+
         append("{");
         newNumericNode("id",getOrderId());
+
         newTabNode("products");
         for (int j = 0; j < getProductsCount(); j++) {
-            getProduct(j).getProductContents();
+            append(getProduct(j).getContents());
         }
 
         if (getProductsCount() > 0) {
@@ -53,5 +57,7 @@ public class Order extends OrdersWriter {
 
         append("]");
         append("}, ");
+
+        return toString();
     }
 }

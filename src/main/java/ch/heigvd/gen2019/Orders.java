@@ -31,12 +31,14 @@ public class Orders extends OrdersWriter {
     }
 
     public String getContents() {
+
         start();
+
         append("{");
         newTabNode("orders");
 
         for (int i = 0; i < getOrdersCount(); i++) {
-            getOrder(i).getOrderContents();
+            append(getOrder(i).getContents());
         }
 
         if (getOrdersCount() > 0) {
@@ -44,6 +46,7 @@ public class Orders extends OrdersWriter {
         }
 
         append("]}");
+
         return toString();
     }
 }

@@ -56,7 +56,10 @@ public class Product extends OrdersWriter  {
             return color.toString();
     }
 
-    void getProductContents() {
+    public String getContents() {
+
+        start();
+
         append("{");
         newTextNode("code",getCode());
         newTextNode("color",getColorString());
@@ -69,5 +72,7 @@ public class Product extends OrdersWriter  {
         newTextNode("currency",getCurrency());
         delete(2);
         append("}, ");
+
+        return toString();
     }
 }
