@@ -22,7 +22,7 @@ public class OrdersWriter {
         StringBuffer sb = new StringBuffer("{\"orders\": [");
 
         for (int i = 0; i < orders.getOrdersCount(); i++) {
-            getOrderContents(sb, orders.getOrder(i));
+            orders.getOrder(i).getOrderContents(sb);
         }
 
         if (orders.getOrdersCount() > 0) {
@@ -30,24 +30,6 @@ public class OrdersWriter {
         }
 
         return sb.append("]}").toString();
-    }
-
-    private void getOrderContents(StringBuffer sb, Order order) {
-        sb.append("{");
-        sb.append("\"id\": ");
-        sb.append(order.getOrderId());
-        sb.append(", ");
-        sb.append("\"products\": [");
-        for (int j = 0; j < order.getProductsCount(); j++) {
-            order.getProduct(j).getProductContents(sb);
-        }
-
-        if (order.getProductsCount() > 0) {
-            sb.delete(sb.length() - 2, sb.length());
-        }
-
-        sb.append("]");
-        sb.append("}, ");
     }
 
 }
