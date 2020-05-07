@@ -11,6 +11,20 @@ public abstract class OrdersWriter {
         sb.append(o.toString());
     }
 
+    void newNode(String s){
+        append("\"" + s + "\": ");
+    }
+
+    void newTextNode(String s){
+        newNode(s);
+        append("\"");
+    }
+
+    void newTabNode(String s){
+        newNode(s);
+        append("[");
+    }
+
     void delete(int n){
         sb.delete(sb.length() - n, sb.length());
     }

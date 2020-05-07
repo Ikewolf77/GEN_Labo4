@@ -58,23 +58,23 @@ public class Product extends OrdersWriter  {
 
     void getProductContents() {
         append("{");
-        append("\"code\": \"");
+        newTextNode("code");
         append(getCode());
         append("\", ");
-        append("\"color\": \"");
+        newTextNode("color");
         append(getColorString());
         append("\", ");
 
         if (getSize().getClass() != InvalidSize.class) {
-            append("\"size\": \"");
+            newTextNode("size");
             append(getSizeString());
             append("\", ");
         }
 
-        append("\"price\": ");
+        newNode("price");
         append(getPrice());
         append(", ");
-        append("\"currency\": \"");
+        newTextNode("currency");
         append(getCurrency());
         append("\"}, ");
     }
