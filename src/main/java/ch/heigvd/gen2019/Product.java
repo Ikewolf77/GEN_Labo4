@@ -48,11 +48,11 @@ public class Product {
         return currency;
     }
 
-    public String getSizeFor() {
-            return getSize().toString();
+    public String getSizeString() {
+            return size.toString();
     }
 
-    public String getColorFor() {
-            return getColor().toString();
+    public String getColorString() {
+            return color.toString();
     }
 }
