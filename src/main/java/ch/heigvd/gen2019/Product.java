@@ -12,7 +12,7 @@
 
 package ch.heigvd.gen2019;
 
-public class Product {
+public class Product extends OrdersWriter  {
 
     private String code;
     private Color color;
@@ -56,26 +56,26 @@ public class Product {
             return color.toString();
     }
 
-    void getProductContents(StringBuffer sb) {
-        sb.append("{");
-        sb.append("\"code\": \"");
-        sb.append(getCode());
-        sb.append("\", ");
-        sb.append("\"color\": \"");
-        sb.append(getColorString());
-        sb.append("\", ");
+    void getProductContents() {
+        append("{");
+        append("\"code\": \"");
+        append(getCode());
+        append("\", ");
+        append("\"color\": \"");
+        append(getColorString());
+        append("\", ");
 
         if (getSize().getClass() != InvalidSize.class) {
-            sb.append("\"size\": \"");
-            sb.append(getSizeString());
-            sb.append("\", ");
+            append("\"size\": \"");
+            append(getSizeString());
+            append("\", ");
         }
 
-        sb.append("\"price\": ");
-        sb.append(getPrice());
-        sb.append(", ");
-        sb.append("\"currency\": \"");
-        sb.append(getCurrency());
-        sb.append("\"}, ");
+        append("\"price\": ");
+        append(getPrice());
+        append(", ");
+        append("\"currency\": \"");
+        append(getCurrency());
+        append("\"}, ");
     }
 }
