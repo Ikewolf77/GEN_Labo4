@@ -1,16 +1,17 @@
 /*
-  _______    _______  _____  ___       ___            __       _______     ______    _______
- /" _   "|  /"     "|(\"   \|"  \     |"  |          /""\     |   _  "\   /    " \  /" __   )
-(: ( \___) (: ______)|.\\   \    |    ||  |         /    \    (. |_)  :) // ____  \(__/ _) ./
- \/ \       \/    |  |: \.   \\  |    |:  |        /' /\  \   |:     \/ /  /    ) :)   /  //
- //  \ ___  // ___)_ |.  \    \. |     \  |___    //  __'  \  (|  _  \\(: (____/ // __ \_ \\
-(:   _(  _|(:      "||    \    \ |    ( \_|:  \  /   /  \\  \ |: |_)  :)\        / (: \__) :\
- \_______)  \_______) \___|\____\)     \_______)(___/    \___)(_______/  \"_____/   \_______)
-
+  _______    _______  _____  ___       ___            __       _______     ______   ___  ___
+ /" _   "|  /"     "|(\"   \|"  \     |"  |          /""\     |   _  "\   /    " \ (: "||_  |
+(: ( \___) (: ______)|.\\   \    |    ||  |         /    \    (. |_)  :) // ____  \|  (__) :|
+ \/ \       \/    |  |: \.   \\  |    |:  |        /' /\  \   |:     \/ /  /    ) :)\____  ||
+ //  \ ___  // ___)_ |.  \    \. |     \  |___    //  __'  \  (|  _  \\(: (____/ //     _\ '|
+(:   _(  _|(:      "||    \    \ |    ( \_|:  \  /   /  \\  \ |: |_)  :)\        /     /" \_|\
+ \_______)  \_______) \___|\____\)     \_______)(___/    \___)(_______/  \"_____/     (_______)
  Etudiants : Mattei Simon
  */
 
 package ch.heigvd.gen2019;
+
+import javax.swing.*;
 
 public class OrdersWriter {
     private Orders orders;
@@ -40,7 +41,7 @@ public class OrdersWriter {
                 sb.append(getColorFor(product));
                 sb.append("\", ");
 
-                if (product.getSize() != Product.SIZE_NOT_APPLICABLE) {
+                if (product.getSize().getClass() != InvalidSize.class) {
                     sb.append("\"size\": \"");
                     sb.append(getSizeFor(product));
                     sb.append("\", ");
@@ -70,34 +71,10 @@ public class OrdersWriter {
     }
 
     private String getSizeFor(Product product) {
-        switch (product.getSize()) {
-            case 1:
-                return "XS";
-            case 2:
-                return "S";
-            case 3:
-                return "M";
-            case 4:
-                return "L";
-            case 5:
-                return "XL";
-            case 6:
-                return "XXL";
-            default:
-                return "Invalid Size";
-        }
+            return product.getSize().toString();
     }
 
     private String getColorFor(Product product) {
-        switch (product.getColor()) {
-            case 1:
-                return "blue";
-            case 2:
-                return "red";
-            case 3:
-                return "yellow";
-            default:
-                return "no color";
-        }
+            return product.getColor().toString();
     }
 }

@@ -9,42 +9,36 @@
  Etudiants : Mattei Simon
  */
 
-
 package ch.heigvd.gen2019;
 
-public class Product {
+public abstract class Color {
+    public abstract String toString();
+}
 
-    private String code;
-    private Color color;
-    private Size size;
-    private double price;
-    private String currency;
-
-    public Product(String code, Color color, Size size, double price, String currency) {
-        this.code = code;
-        this.color = color;
-        this.size = size;
-        this.price = price;
-        this.currency = currency;
+class Red extends Color {
+    @Override
+    public String toString() {
+        return "red";
     }
+}
 
-    public String getCode() {
-        return code;
+class Blue extends Color {
+    @Override
+    public String toString() {
+        return "blue";
     }
+}
 
-    public Color getColor() {
-        return color;
+class Yellow extends Color {
+    @Override
+    public String toString() {
+        return "yellow";
     }
+}
 
-    public Size getSize() {
-        return size;
-    }
-
-    public double getPrice() {
-        return price;
-    }
-
-    public String getCurrency() {
-        return currency;
+class NullColor extends Color {
+    @Override
+    public String toString() {
+        return "no color";
     }
 }
