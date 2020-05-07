@@ -11,8 +11,6 @@
 
 package ch.heigvd.gen2019;
 
-import javax.swing.*;
-
 public class OrdersWriter {
     private Orders orders;
 
@@ -60,7 +58,7 @@ public class OrdersWriter {
 
         if (product.getSize().getClass() != InvalidSize.class) {
             sb.append("\"size\": \"");
-            sb.append(getSizeFor(product));
+            sb.append(product.getSizeFor());
             sb.append("\", ");
         }
 
@@ -70,10 +68,6 @@ public class OrdersWriter {
         sb.append("\"currency\": \"");
         sb.append(product.getCurrency());
         sb.append("\"}, ");
-    }
-
-    private String getSizeFor(Product product) {
-            return product.getSize().toString();
     }
 
     private String getColorFor(Product product) {

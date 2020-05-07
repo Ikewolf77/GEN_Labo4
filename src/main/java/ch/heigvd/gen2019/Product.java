@@ -47,4 +47,8 @@ public class Product {
     public String getCurrency() {
         return currency;
     }
+
+    public String getSizeFor() {
+            return getSize().toString();
+    }
 }
