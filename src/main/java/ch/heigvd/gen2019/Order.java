@@ -15,7 +15,7 @@ package ch.heigvd.gen2019;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Order {
+public class Order extends OrdersWriter {
     private List<Product> products = new ArrayList<Product>();
     private int id;
 
@@ -39,21 +39,15 @@ public class Order {
         products.add(product);
     }
 
-    public void getOrderContents(StringBuffer sb) {
-        sb.append("{");
-        sb.append("\"id\": ");
-        sb.append(getOrderId());
-        sb.append(", ");
-        sb.append("\"products\": [");
-        for (int j = 0; j < getProductsCount(); j++) {
-            getProduct(j).getProductContents(sb);
-        }
+    public String getContents() {
 
-        if (getProductsCount() > 0) {
-            sb.delete(sb.length() - 2, sb.length());
-        }
+        start();
 
-        sb.append("]");
-        sb.append("}, ");
+        append("{");
+        newNumericNode("id",getOrderId());
+        newTabNode("products", products.toArray(new OrdersWriter[0]));
+        append("}, ");
+
+        return toString();
     }
 }

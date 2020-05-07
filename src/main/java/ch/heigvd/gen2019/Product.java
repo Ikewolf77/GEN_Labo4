@@ -12,7 +12,7 @@
 
 package ch.heigvd.gen2019;
 
-public class Product {
+public class Product extends OrdersWriter  {
 
     private String code;
     private Color color;
@@ -56,26 +56,23 @@ public class Product {
             return color.toString();
     }
 
-    void getProductContents(StringBuffer sb) {
-        sb.append("{");
-        sb.append("\"code\": \"");
-        sb.append(getCode());
-        sb.append("\", ");
-        sb.append("\"color\": \"");
-        sb.append(getColorString());
-        sb.append("\", ");
+    public String getContents() {
+
+        start();
+
+        append("{");
+        newTextNode("code",getCode());
+        newTextNode("color",getColorString());
 
         if (getSize().getClass() != InvalidSize.class) {
-            sb.append("\"size\": \"");
-            sb.append(getSizeString());
-            sb.append("\", ");
+            newTextNode("size",getSizeString());
         }
 
-        sb.append("\"price\": ");
-        sb.append(getPrice());
-        sb.append(", ");
-        sb.append("\"currency\": \"");
-        sb.append(getCurrency());
-        sb.append("\"}, ");
+        newNumericNode("price",getPrice());
+        newTextNode("currency",getCurrency());
+        delete(2);
+        append("}, ");
+
+        return toString();
     }
 }
