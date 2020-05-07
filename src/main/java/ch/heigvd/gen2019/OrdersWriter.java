@@ -15,9 +15,17 @@ public abstract class OrdersWriter {
         append("\"" + s + "\": ");
     }
 
-    void newTextNode(String s){
-        newNode(s);
+    void newNumericNode(String object, Object value){
+        newNode(object);
+        append(value);
+        append(", ");
+    }
+
+    void newTextNode(String object, String value){
+        newNode(object);
         append("\"");
+        append(value);
+        append("\", ");
     }
 
     void newTabNode(String s){
