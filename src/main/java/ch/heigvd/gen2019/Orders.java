@@ -35,17 +35,8 @@ public class Orders extends OrdersWriter {
         start();
 
         append("{");
-        newTabNode("orders");
-
-        for (int i = 0; i < getOrdersCount(); i++) {
-            append(getOrder(i).getContents());
-        }
-
-        if (getOrdersCount() > 0) {
-            delete(2);
-        }
-
-        append("]}");
+        newTabNode("orders", orders.toArray(new OrdersWriter[0]));
+        append("}");
 
         return toString();
     }

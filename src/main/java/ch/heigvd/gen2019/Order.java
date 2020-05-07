@@ -45,17 +45,7 @@ public class Order extends OrdersWriter {
 
         append("{");
         newNumericNode("id",getOrderId());
-
-        newTabNode("products");
-        for (int j = 0; j < getProductsCount(); j++) {
-            append(getProduct(j).getContents());
-        }
-
-        if (getProductsCount() > 0) {
-            delete(2);
-        }
-
-        append("]");
+        newTabNode("products", products.toArray(new OrdersWriter[0]));
         append("}, ");
 
         return toString();

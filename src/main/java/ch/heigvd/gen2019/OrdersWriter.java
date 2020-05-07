@@ -1,4 +1,17 @@
+/*
+  _______    _______  _____  ___       ___            __       _______     ______   ___  ___
+ /" _   "|  /"     "|(\"   \|"  \     |"  |          /""\     |   _  "\   /    " \ (: "||_  |
+(: ( \___) (: ______)|.\\   \    |    ||  |         /    \    (. |_)  :) // ____  \|  (__) :|
+ \/ \       \/    |  |: \.   \\  |    |:  |        /' /\  \   |:     \/ /  /    ) :)\____  ||
+ //  \ ___  // ___)_ |.  \    \. |     \  |___    //  __'  \  (|  _  \\(: (____/ //     _\ '|
+(:   _(  _|(:      "||    \    \ |    ( \_|:  \  /   /  \\  \ |: |_)  :)\        /     /" \_|\
+ \_______)  \_______) \___|\____\)     \_______)(___/    \___)(_______/  \"_____/     (_______)
+ Etudiants : Mattei Simon
+ */
+
 package ch.heigvd.gen2019;
+
+import java.util.List;
 
 public abstract class OrdersWriter {
     private StringBuffer sb;
@@ -28,12 +41,22 @@ public abstract class OrdersWriter {
         append("\", ");
     }
 
-    void newTabNode(String s){
+    void newTabNode(String s, OrdersWriter[] objects){
         newNode(s);
         append("[");
+
+        for (OrdersWriter object : objects) {
+            append(object.getContents());
+        }
+
+        if (objects.length > 0) {
+            delete(2);
+        }
+
+        append("]");
     }
 
-    void delete(int n){
+    public void delete(int n){
         sb.delete(sb.length() - n, sb.length());
     }
 
