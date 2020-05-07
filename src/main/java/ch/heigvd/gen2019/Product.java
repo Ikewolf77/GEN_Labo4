@@ -51,4 +51,8 @@ public class Product {
     public String getSizeFor() {
             return getSize().toString();
     }
+
+    public String getColorFor() {
+            return getColor().toString();
+    }
 }
